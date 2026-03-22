@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Desenvolvimento Web profissional - Sites, Sistemas Web, SaaS e Aplicações Mobile. Soluções sob medida para sua empresa." />
+  <title>Desenvolvimento Web | Serf Tecnologia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:        #0E1F3D;
+      --navy-mid:    #122347;
+      --navy-light:  #1A2F58;
+      --blue:        #1565C0;
+      --blue-bright: #1976D2;
+      --green:       #5BAD2A;
+      --green-light: #8DC63F;
+      --green-dim:   rgba(141,198,63,0.12);
+      --white:       #FFFFFF;
+      --silver:      #D4D9E3;
+      --steel:       #8B92A1;
+      --muted:       #5A6270;
+      --border:      rgba(255,255,255,0.08);
+      --accent-dim:  rgba(21,101,192,0.08);
+    }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: var(--silver);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(14,31,61,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 16px 0;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex; align-items: center;
+      text-decoration: none;
+    }
+    .logo img {
+      height: 80px; /* Ajustado para 2x (de 40px para 80px) */
+      width: auto;
+      display: block;
+    }
+    @media (max-width: 480px) {
+      .logo img { height: 64px; } /* Ajustado para 2x (de 32px para 64px) */
+    }
+    .nav-link {
+      color: var(--steel);
+      font-size: 14px;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--green-light); }
+    
+    /* MAIN */
+    main { margin-top: 80px; }
+    
+    /* HERO */
+    .hero-dev {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .hero-dev h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .hero-dev p {
+      font-size: 18px;
+      color: var(--steel);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    
+    /* SERVICOS GRID */
+    .dev-services {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .dev-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+    .dev-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      transition: all .3s;
+    }
+    .dev-card:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(141,198,63,0.3);
+      transform: translateY(-4px);
+    }
+    .dev-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .dev-card .price {
+      font-size: 14px;
+      color: var(--green-light);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .dev-card p {
+      font-size: 15px;
+      color: var(--steel);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .dev-features {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .dev-features li {
+      font-size: 14px;
+      color: var(--silver);
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+    }
+    .dev-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green-light);
+      font-weight: 600;
+    }
+    .dev-cta {
+      display: inline-block;
+      padding: 10px 24px;
+      background: rgba(141,198,63,0.1);
+      border: 1px solid rgba(141,198,63,0.3);
+      border-radius: 6px;
+      color: var(--green-light);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .dev-cta:hover {
+      background: rgba(141,198,63,0.2);
+      border-color: var(--green-light);
+    }
+    
+    /* BENEFICIOS */
+    .beneficios-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      background: rgba(141,198,63,0.05);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 80px;
+    }
+    .beneficios-section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .beneficios-section p {
+      font-size: 14px;
+      color: var(--steel);
+      margin-bottom: 24px;
+    }
+    .beneficios-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .beneficios-list li {
+      font-size: 14px;
+      color: var(--silver);
+      padding: 12px 0;
+      padding-left: 28px;
+      position: relative;
+    }
+    .beneficios-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--green-light);
+      font-weight: 600;
+    }
+    
+    /* CTA FINAL */
+    .cta-final {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .cta-final h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-final p {
+      font-size: 16px;
+      color: var(--steel);
+      margin-bottom: 32px;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 32px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      color: var(--navy);
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(141,198,63,0.3);
+    }
+    
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-dev h1 { font-size: 32px; }
+      .hero-dev p { font-size: 16px; }
+      .dev-grid { grid-template-columns: 1fr; gap: 24px; }
+      .dev-card { padding: 24px; }
+      .dev-card h3 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <a href="serf-tecnologia.html" class="logo">
+        <img src="logo-serf.png" alt="Serf Tecnologia Logo">
+      </a>
+      <a href="serf-tecnologia.html#contato" class="nav-link">Voltar para Home</a>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <!-- HERO -->
+    <section class="hero-dev">
+      <h1>Desenvolvimento Web Profissional</h1>
+      <p>Soluções digitais completas, desde sites institucionais até plataformas SaaS escaláveis. Escolha o nível de complexidade que sua empresa precisa.</p>
+    </section>
+
+    <!-- SERVICOS -->
+    <section class="dev-services">
+      <div class="dev-grid">
+        
+        <!-- CRIACAO DE SITES -->
+        <div class="dev-card">
+          <h3>Criação de Sites</h3>
+          <div class="price">A partir de R$ 499,90</div>
+          <p>Sites institucionais e landing pages com foco em presença digital e conversão.</p>
+          <ul class="dev-features">
+            <li>Design responsivo</li>
+            <li>Otimização SEO</li>
+            <li>Integração com redes sociais</li>
+            <li>Formulários de contato</li>
+          </ul>
+          <a href="https://wa.me/5514997821490?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20mais%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20sites%20da%20Serf%20Tecnologia." target="_blank" class="dev-cta">Solicitar orçamento →</a>
+        </div>
+
+        <!-- SISTEMAS WEB -->
+        <div class="dev-card">
+          <h3>Sistemas Web</h3>
+          <div class="price">Valor sob consulta</div>
+          <p>Desenvolvimento de sistemas personalizados para automatizar processos e melhorar a operação do negócio.</p>
+          <ul class="dev-features">
+            <li>Painéis administrativos</li>
+            <li>Sistemas internos</li>
+            <li>Integrações com APIs</li>
+            <li>Controle de processos</li>
+          </ul>
+          <a href="https://wa.me/5514997821490?text=Ol%C3%A1!%20Gostaria%20de%20conhecer%20mais%20sobre%20desenvolvimento%20de%20sistemas%20web." target="_blank" class="dev-cta">Falar com especialista →</a>
+        </div>
+
+        <!-- SAAS -->
+        <div class="dev-card">
+          <h3>SaaS (Software como Serviço)</h3>
+          <div class="price">Valor sob consulta</div>
+          <p>Desenvolvimento de plataformas SaaS escaláveis, pensadas para crescimento e monetização.</p>
+          <ul class="dev-features">
+            <li>Arquitetura escalável</li>
+            <li>Multiusuário</li>
+            <li>Gestão de assinaturas</li>
+            <li>Suporte técnico 24/7</li>
+          </ul>
+          <a href="https://wa.me/5514997821490?text=Ol%C3%A1!%20Tenho%20interesse%20em%20desenvolver%20uma%20plataforma%20SaaS." target="_blank" class="dev-cta">Falar com especialista →</a>
+        </div>
+
+        <!-- MOBILE -->
+        <div class="dev-card">
+          <h3>Aplicações Mobile</h3>
+          <div class="price">Valor sob consulta</div>
+          <p>Desenvolvimento de aplicativos mobile integrados com sistemas web.</p>
+          <ul class="dev-features">
+            <li>Android e iOS</li>
+            <li>Integração com APIs</li>
+            <li>Experiência otimizada</li>
+            <li>Atualizações contínuas</li>
+          </ul>
+          <a href="https://wa.me/5514997821490?text=Ol%C3%A1!%20Gostaria%20de%20desenvolver%20um%20aplicativo%20mobile." target="_blank" class="dev-cta">Falar com especialista →</a>
+        </div>
+
+      </div>
+
+      <!-- BENEFICIOS -->
+      <div class="beneficios-section">
+        <h2>Benefícios para Clientes com Plano Ativo</h2>
+        <p>Ao contratar um de nossos planos de suporte técnico, você ganha vantagens exclusivas:</p>
+        <ul class="beneficios-list">
+          <li>Alterações simples gratuitas</li>
+          <li>Hospedagem por 1 ano</li>
+          <li>Domínio por 1 ano</li>
+          <li>Suporte técnico prioritário</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+      <h2>Pronto para começar?</h2>
+      <p>Entre em contato conosco para discutir sua ideia e receber um orçamento personalizado.</p>
+      <a href="https://wa.me/5514997821490?text=Ol%C3%A1!%20Gostaria%20de%20discutir%20um%20projeto%20de%20desenvolvimento%20web." target="_blank" class="btn-primary">Falar com Especialista</a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="ano-footer"></span> Serf Tecnologia. Todos os direitos reservados.</p>
+    <p>Duartina, SP – Brasil</p>
+  </footer>
+
+  <script>
+    document.getElementById('ano-footer').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
