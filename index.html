@@ -269,28 +269,30 @@
     }
     .plans-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0; position: relative;
-      border: 1px solid var(--border); border-radius: 12px; overflow: visible;
+      gap: 20px; position: relative;
+      border: none; border-radius: 0; overflow: visible;
     }
     .plan-card {
       padding: 40px 32px 36px; background: var(--navy-light);
-      border-right: 1px solid var(--border);
-      position: relative; transition: background .2s;
+      border: 1px solid var(--border); border-radius: 10px;
+      position: relative; transition: all .3s ease;
       display: flex; flex-direction: column;
+      overflow: visible;
     }
-    .plan-card:last-child { border-right: none; }
-    .plan-card:hover { background: #1b2f54; }
+    .plan-card:hover { background: #1b2f54; transform: translateY(-4px); }
     .plan-card.featured {
       background: var(--navy-mid); border: 2px solid var(--green);
-      border-radius: 12px; margin: -2px; z-index: 2;
-      box-shadow: 0 0 40px rgba(91,173,42,0.15);
+      border-radius: 10px; z-index: 2;
+      box-shadow: 0 12px 40px rgba(91,173,42,0.15);
     }
     .plan-badge-popular {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
       background: var(--green); color: #0E1F3D;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 4px 18px; border-radius: 100px;
-      white-space: nowrap;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 6px 20px; border-radius: 50px;
+      white-space: nowrap; z-index: 10;
+      box-shadow: 0 4px 12px rgba(91,173,42,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .plan-name {
       font-family: 'Barlow Condensed', sans-serif;
@@ -607,7 +609,7 @@
 
     /* RESPONSIVE */
     @media (max-width: 960px) {
-      .plans-grid { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr; gap: 32px; }
       .plan-card.featured { margin: 0; }
       #sobre { grid-template-columns: 1fr; }
       .contato-wrapper { grid-template-columns: 1fr; }
@@ -622,6 +624,8 @@
       section { padding: 72px 5%; }
       .hero-stats { gap: 24px; }
       .stat-num { font-size: 28px; }
+      .plan-card { padding: 32px 24px; }
+      .plan-badge-popular { top: -10px; padding: 4px 16px; font-size: 10px; }
       footer { padding: 32px 5% 24px; }
     }
   </style>
@@ -933,11 +937,11 @@
           <label for="servico">Área de interesse</label>
           <select id="servico" name="servico">
             <option value="">Selecione um serviço</option>
-            <option>Plano Start</option>
-            <option>Plano Business</option>
-            <option>Plano Pro</option>
-            <option>Desenvolvimento de Software</option>
+            <option>Desenvolvimento Web</option>
             <option>Consultoria em TI</option>
+            <option>Plano Essencial</option>
+            <option>Plano Estruturado</option>
+            <option>Plano Avançado</option>
             <option>Outro</option>
           </select>
         </div>
